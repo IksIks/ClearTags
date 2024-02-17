@@ -6,15 +6,16 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>200.ico</ApplicationIcon>
+    <ApplicationIcon>Main.ico</ApplicationIcon>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Icon.ico" />
+    <None Remove="Icon200.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="200.ico" />
+    <Content Include="Main.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,7 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Icon.ico" />
+    <Resource Include="Icon200.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

@@ -12,7 +12,7 @@
         </Menu>
         <Button Content="Свернуть" Click="HideProgramm" DockPanel.Dock="Bottom" Margin="70,0,70,10" Background="Red" />
         <StackPanel Orientation="Vertical" Background="LightGray">
-            <taskbar:TaskbarIcon Visibility="Visible" ToolTip="Конвертер тэгов" TrayLeftMouseDown="ShowProgramm" IconSource="Icon.ico" />
+            <taskbar:TaskbarIcon ToolTip="Test" Visibility="Visible" TrayLeftMouseDown="ShowProgramm" IconSource="Icon200.ico" />
             <Label Content="Скопированный текст" FontWeight="Bold" Margin="5,10,100,0" />
             <TextBlock x:Name="InputTeg" TextWrapping="Wrap" Margin="5" />
             <Label Content="Итоговый текст" FontWeight="Bold" Margin="5,2,100,0" />
