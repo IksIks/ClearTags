@@ -1,0 +1,23 @@
+﻿<Window x:Class="ClearTags.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClearTags"
+        xmlns:taskbar="http://www.hardcodet.net/taskbar"
+        mc:Ignorable="d"
+          Title="Конвертер тэгов" Height="450" Width="300">
+    <DockPanel Background="LightGray">
+        <Menu DockPanel.Dock="Top" Background="LightGray">
+            <MenuItem Name="Info" Header="О программе" Click="ShowInfo" Background="Aqua" />
+        </Menu>
+        <Button Content="Свернуть" Click="HideProgramm" DockPanel.Dock="Bottom" Margin="70,0,70,10" Background="Red" />
+        <StackPanel Orientation="Vertical" Background="LightGray">
+            <taskbar:TaskbarIcon Visibility="Visible" ToolTip="Конвертер тэгов" TrayLeftMouseDown="ShowProgramm" IconSource="Icon.ico" />
+            <Label Content="Скопированный текст" FontWeight="Bold" Margin="5,10,100,0" />
+            <TextBlock x:Name="InputTeg" TextWrapping="Wrap" Margin="5" />
+            <Label Content="Итоговый текст" FontWeight="Bold" Margin="5,2,100,0" />
+            <TextBlock x:Name="OutputTeg" Margin="5" TextWrapping="Wrap" />
+        </StackPanel>
+    </DockPanel>
+</Window>
