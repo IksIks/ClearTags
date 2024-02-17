@@ -6,13 +6,18 @@
         xmlns:taskbar="http://www.hardcodet.net/taskbar"
         mc:Ignorable="d"
           Title="Конвертер тэгов" Height="450" Width="300">
-    <DockPanel Background="LightGray">
-        <Menu DockPanel.Dock="Top" Background="LightGray">
-            <MenuItem Name="Info" Header="О программе" Click="ShowInfo" Background="Aqua" />
+    <DockPanel Background="Beige">
+        <Menu DockPanel.Dock="Top" Background="Beige">
+            <MenuItem Name="Info" Header="О программе" Click="ShowInfo" Background="SandyBrown" />
         </Menu>
-        <Button Content="Свернуть" Click="HideProgramm" DockPanel.Dock="Bottom" Margin="70,0,70,10" Background="Red" />
-        <StackPanel Orientation="Vertical" Background="LightGray">
-            <taskbar:TaskbarIcon ToolTip="Test" Visibility="Visible" TrayLeftMouseDown="ShowProgramm" IconSource="Icon200.ico" />
+        <Border DockPanel.Dock="Bottom" Margin="70,0,70,10" CornerRadius="20">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="5" />
+            </Border.Effect>
+            <Button Content="Свернуть" Click="HideProgramm" Background="Red" />
+        </Border>
+        <StackPanel Orientation="Vertical" Background="Beige">
+            <taskbar:TaskbarIcon ToolTipText="Конвертер тэгов" Visibility="Visible" TrayLeftMouseDown="ShowProgramm" IconSource="Icon200.ico" />
             <Label Content="Скопированный текст" FontWeight="Bold" Margin="5,10,100,0" />
             <TextBlock x:Name="InputTeg" TextWrapping="Wrap" Margin="5" />
             <Label Content="Итоговый текст" FontWeight="Bold" Margin="5,2,100,0" />
