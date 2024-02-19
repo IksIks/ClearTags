@@ -7,13 +7,15 @@ namespace ClearTags
 {
     public partial class MainWindow : Window
     {
-        private readonly char[] separator = new[] { '-', '(', ')', ' ', ',', ':', ';', '!', '<', '>', '.', '/', '\\', '?', '#', '$', '$', '%',
-                                                   '^', '*', '+', '`'};
+        private readonly char[] separator = ['-', '(', ')', ' ', ',', ':', ';', '!', '<', '>', '.', '/', '\\', '?', '#', '$', '$', '%', '^', '*', '+', '`'];
+
+        private const int maxLengthOutputString = 300;
+        private readonly SharpClipboard clipboard;
 
         public MainWindow()
         {
             InitializeComponent();
-            var clipboard = new SharpClipboard();
+            clipboard = new SharpClipboard();
             Clipboard.Clear();
             clipboard.ClipboardChanged += ClipboardChanged;
         }
@@ -22,23 +24,20 @@ namespace ClearTags
         {
             if (e.ContentType == SharpClipboard.ContentTypes.Text)
             {
-                string text = InputTeg.Text = e.Content.ToString();
-                if (e.Content.ToString().Contains("@"))
+                string? text = InputTeg.Text = e.Content.ToString();
+                if (text.IndexOf('@') >= 0)
                 {
                     StringBuilder tegs = new StringBuilder();
-                    var textSplit = e.Content.ToString().Split(separator);
-                    foreach (var st in textSplit)
+                    var textSplit = text.Split(separator).Where(str => str.Contains('@'));
+                    foreach (var item in textSplit)
                     {
-                        if (st.Contains("@"))
-                        {
-                            tegs.Append(st + " ");
-                        }
+                        tegs.Append(item + " ");
                     }
                     OutputTeg.Text = tegs.ToString();
                     Clipboard.SetText(OutputTeg.Text);
                     InputTeg.Text = text;
                 }
-                else OutputTeg.Text = text;
+                else OutputTeg.Text = (text.Length < maxLengthOutputString) ? text : "Скопированный текст очень большой";
             }
         }
 
@@ -54,9 +53,10 @@ namespace ClearTags
 
         private void ShowInfo(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Программа убирает ненужные ссылки в Никнеймах. " +
-                            "Будьте внимательны, при копировании Email адресов " +
-                            "программу лучше выключать, во избежание неправильной вставки", "Сreated by IKS");
+            MessageBox.Show("Программа убирает ненужные ссылки в Никнеймах. \n" +
+                            "Будьте внимательны, при копировании Email адресов \n" +
+                            "программу лучше выключать, во избежание \nнеправильной вставки"
+                            , "Сreated by IKS");
         }
     }
 }
